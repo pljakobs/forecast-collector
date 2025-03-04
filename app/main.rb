@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 
 require 'dotenv/load'
+require 'date'
 require_relative 'loop'
 require_relative 'config'
 

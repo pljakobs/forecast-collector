@@ -18,20 +18,7 @@ class Loop
   end
 
   def start(max_count)
-    self.count = 0
-    forecast = make_forecast
-    loop do
-      self.count += 1
-      now = DateTime.now
-      puts "##{count} Fetching forecast at #{now}"
-      push_to_influx(forecast.fetch_data)
-      break if max_count && count >= max_count
-
-      next_request = DateTime.now.to_time + config.forecast_interval
-      puts "  Sleeping for #{config.forecast_interval} seconds (until #{next_request}) ..."
-
-      sleep config.forecast_interval
-    end
+    push_to_influx(data)
   end
 
   private
